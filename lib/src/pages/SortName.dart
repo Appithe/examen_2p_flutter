@@ -8,8 +8,8 @@ class SortName extends StatefulWidget {
 }
 
 class _SortNameState extends State<SortName> {
-  String _nombre;
-  String _nombreDesordenado;
+  String _name;
+  String _disorderName;
 
   @override
   Widget build(BuildContext context) {
@@ -33,28 +33,35 @@ class _SortNameState extends State<SortName> {
                 ),
                 onChanged: (value) {
                   setState(() {
-                    _nombre = value;
-                    sortName();
+                    _name = value;
                   });
                 },
               ),
             ),
           ),
+          ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  var splitedName;
+
+                  _name = _name.toLowerCase();
+
+                  splitedName = _name.split('');
+
+                  splitedName.sort();
+
+                  splitedName.join();
+
+                  _disorderName = splitedName.join();
+                });
+              },
+              child: Text('Desordenar')),
           Container(
-            child: Text('Nombre en orden: $_nombre'),
-          ),
-          Container(
-            child: Text('Nombre en desorden: $_nombreDesordenado'),
+            margin: EdgeInsets.only(top: 10),
+            child: Text('Nombre en desorden: $_disorderName', style: TextStyle(fontSize: 25),),
           ),
         ],
       ),
     );
-  }
-
-  void sortName() {
-    setState(() {
-      _nombre.split('');
-      print(_nombre);
-    });
   }
 }
