@@ -50,8 +50,6 @@ class _SortNameState extends State<SortName> {
 
                   splitedName.sort();
 
-                  splitedName.join();
-
                   _disorderName = splitedName.join();
                 });
               },
