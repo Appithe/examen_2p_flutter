@@ -10,8 +10,15 @@ class RandomNumbers extends StatefulWidget {
 class _RandomNumbersState extends State<RandomNumbers> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('RandomNumbers')
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Numero Random'),
+      ),
+      body: Column(
+        children: <Widget>[
+          
+        ],
+      ),
     );
   }
 }

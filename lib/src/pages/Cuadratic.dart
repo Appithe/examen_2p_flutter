@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Cuadratic extends StatefulWidget {
   Cuadratic({Key key}) : super(key: key);
@@ -40,7 +41,7 @@ class _CuadraticState extends State<Cuadratic> {
                 margin: EdgeInsets.only(top: 5.0, bottom: 5.0),
                 child: TextField(
                   textAlign: TextAlign.center,
-                  textCapitalization: TextCapitalization.words,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'Valor de a',
                     helperText: 'valor de a',
@@ -59,7 +60,7 @@ class _CuadraticState extends State<Cuadratic> {
                 margin: EdgeInsets.only(left: 5.0, right: 5.0),
                 child: TextField(
                   textAlign: TextAlign.center,
-                  textCapitalization: TextCapitalization.words,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'Valor de b',
                     helperText: 'valor de b',
@@ -78,7 +79,7 @@ class _CuadraticState extends State<Cuadratic> {
                 margin: EdgeInsets.only(top: 5.0, bottom: 5.0),
                 child: TextField(
                   textAlign: TextAlign.center,
-                  textCapitalization: TextCapitalization.words,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'Valor de c',
                     helperText: 'valor de c',
@@ -101,18 +102,20 @@ class _CuadraticState extends State<Cuadratic> {
               padding: EdgeInsets.all(10.0),
               child: Text('Resultado: x1 = $_x1, x2 = $_x2')),
           ElevatedButton(
-              onPressed: () => {
-                    a = double.parse(_a),
-                    b = double.parse(_b),
-                    c = double.parse(_c),
+              onPressed: () {
+                a = double.parse(_a);
+                b = double.parse(_b);
+                c = double.parse(_c);
 
-                    x1 = (-b + sqrt(pow(b, 2) - 4 * a * b)) / (2 * a),
-                    x2 = (-b - sqrt(pow(b, 2) - 4 * a * b)) / (2 * a),
-                    
-                    _x1 = x1.toString(),
-                    _x2 = x2.toString(),
-                    print("$_x1, $_x2")
-                  },
+                x1 = (-b + sqrt(pow(b, 2) - 4 * a * b)) / (2 * a);
+                x2 = (-b - sqrt(pow(b, 2) - 4 * a * b)) / (2 * a);
+                print("$x1, $x2");
+
+                setState(() {
+                  _x1 = x1.toString();
+                  _x2 = x2.toString();
+                });
+              },
               child: Text('Calcular'))
         ],
       ),
